@@ -8,12 +8,12 @@ import (
 
 type NoteSRP struct {
 	Lines    map[int]string
-	lastLine int
+	LastLine int
 }
 
 func (noteSrp *NoteSRP) AddLine(line string) int {
-	noteSrp.Lines[noteSrp.lastLine] = line
-	noteSrp.lastLine++
+	noteSrp.Lines[noteSrp.LastLine] = line
+	noteSrp.LastLine++
 	return len(noteSrp.Lines)
 }
 
