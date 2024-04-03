@@ -1,0 +1,2 @@
+#### SOLID
+ - Single Responsibility Principle
