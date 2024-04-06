@@ -2,10 +2,12 @@ package solid
 
 import (
 	"fmt"
+	dip "golang/designprinciplesandpatterns/solid/dip"
 	isp "golang/designprinciplesandpatterns/solid/isp"
 	lsp "golang/designprinciplesandpatterns/solid/lsp"
 	ocp "golang/designprinciplesandpatterns/solid/ocp"
 	srp "golang/designprinciplesandpatterns/solid/srp"
+	"strings"
 	"time"
 )
 
@@ -75,4 +77,24 @@ func PrintIsp() {
 	mobile.ConnectCall(9400976122)
 	mobile.DisconnectCall(9400976122)
 	mobile.PlayGame("PubG Mobile")
+}
+
+func PrintDip() {
+
+	posts := []dip.Post{{From: dip.Facebook, PostText: "I am posting it simply to test"},
+		{From: dip.Instagram, PostText: "I am posting it in IS"},
+		{From: dip.WhatsApp, PostText: "I ate a bug"},
+		{From: dip.Facebook, PostText: "We found a unicorn"},
+		{From: dip.Instagram, PostText: "He Stepped on puppy poo!!"},
+		{From: dip.WhatsApp, PostText: "She fell down"}}
+
+	fmt.Println("--------------Failed DIP printing FB posts--------------------")
+	pa1 := &dip.PostAnalyzer{}
+	fmt.Println(strings.Join(pa1.GetPostsInFacebook(posts), ", \n"))
+
+	fmt.Println("--------------Success DIP printing FB posts--------------------")
+	socialMediaPost := &dip.SocialMediaPost{Posts: posts}
+	pa2 := &dip.SocialMediaPostAnalyzer{Analyzer: socialMediaPost}
+	fmt.Println(strings.Join(pa2.GetPostsInFacebook(), ", \n"))
+
 }
